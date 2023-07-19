@@ -7,8 +7,11 @@ public class SC_CanSpawner : MonoBehaviour
     //Variables
     public float canInterval = 3f;
     private float canTimer = 0f;
+    private Transform test;
+    private bool hasrepeated = true;
 
     public GameObject[] canNum;
+    /*[HideInInspector]*/ public List<GameObject> preventRepeat = new List<GameObject>();
 
     void Update()
     {
@@ -17,16 +20,28 @@ public class SC_CanSpawner : MonoBehaviour
 
         if (canTimer >= canInterval)
         {
-            Instantiate(canNum[Random.Range(0, canNum.Length)]);
+            if (hasrepeated == true)
+            {
+                Instantiate(canNum[0], transform.position, transform.rotation);
+                preventRepeat.Clear();
+                hasrepeated = false;
+            }
+            else if (hasrepeated == false)
+            {
+                Instantiate(canNum[Random.Range(0, canNum.Length)], transform.position, transform.rotation);
+            }
+
             canTimer -= canInterval;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (tag == "Danger")
+        if (preventRepeat.Count >= 1)
         {
-            //Create a list to check if 2 danger are created, then make good cans before reseting the list
+            hasrepeated = true;
         }
+
+        preventRepeat.Add(canNum[1]);
     }
 }
