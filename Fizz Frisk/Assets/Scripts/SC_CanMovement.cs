@@ -9,9 +9,31 @@ public class SC_CanMovement : MonoBehaviour
     public float runSpd = 1f;
     private bool waitComplete = true;
 
+    [HideInInspector] public bool deleteSelf = false;
+    public float deletionTime = 1f;
+    private bool deletionComplete = false;
+
     void Update()
     {
         ConveyerMovement();
+
+        if (deleteSelf == true)
+        {
+            if (deletionComplete == true)
+            {
+                Destroy(gameObject);
+            }
+
+            if (deletionComplete == false && deletionTime > 0)
+            {
+                deletionTime -= Time.deltaTime;
+            }
+            else if (deletionTime <= 0)
+            {
+                deletionComplete = true;
+            }
+
+        }
     }
 
     void ConveyerMovement()

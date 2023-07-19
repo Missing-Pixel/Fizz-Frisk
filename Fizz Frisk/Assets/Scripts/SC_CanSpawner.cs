@@ -11,7 +11,7 @@ public class SC_CanSpawner : MonoBehaviour
     private bool hasrepeated = true;
 
     public GameObject[] canNum;
-    /*[HideInInspector]*/ public List<GameObject> preventRepeat = new List<GameObject>();
+    [HideInInspector] public List<GameObject> preventRepeat = new List<GameObject>();
 
     void Update()
     {

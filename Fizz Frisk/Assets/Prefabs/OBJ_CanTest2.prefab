@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2972119125774032334}
   - component: {fileID: 1401808560036277881}
   - component: {fileID: 1524165633382150917}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: OBJ_CanTest2
-  m_TagString: Untagged
+  m_TagString: Danger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 1
   runSpd: 3
+  deleteSelf: 0
+  deletionTime: 3
 --- !u!70 &1524165633382150917
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

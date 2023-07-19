@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2212285911172990113}
   - component: {fileID: 2212285911172990112}
   - component: {fileID: 2212285911172990115}
+  - component: {fileID: 4780859997360627343}
   m_Layer: 0
   m_Name: OBJ_CanTest
   m_TagString: Untagged
@@ -121,3 +122,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitTime: 1
   runSpd: 3
+  deleteSelf: 0
+  deletionTime: 3
+--- !u!70 &4780859997360627343
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2212285911172990114}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.01, y: -0.08}
+  m_Size: {x: 0.59, y: 1.12}
+  m_Direction: 0
