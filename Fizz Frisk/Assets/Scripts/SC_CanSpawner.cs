@@ -13,10 +13,10 @@ public class SC_CanSpawner : MonoBehaviour
     public GameObject[] canNum;
     public Animator anim;
 
-    void Update()
+    void FixedUpdate()
     {
         //Spawn Timer
-        canTimer += Time.deltaTime;
+        canTimer += Time.fixedDeltaTime;
 
         if (canTimer >= canInterval)
         {
@@ -34,7 +34,7 @@ public class SC_CanSpawner : MonoBehaviour
                 
             }
 
-            canTimer = 0;
+            canTimer -= canInterval + Time.fixedDeltaTime;
         }
     }
 

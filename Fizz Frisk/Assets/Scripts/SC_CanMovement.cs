@@ -13,9 +13,17 @@ public class SC_CanMovement : MonoBehaviour
     public float deletionTime = 1f;
     private bool deletionComplete = false;
 
-    void Update()
+    void FixedUpdate()
     {
-        ConveyerMovement();
+        if (waitComplete == true)
+        {
+            transform.Translate(Vector2.right * runSpd * Time.fixedDeltaTime);
+            StartCoroutine(WaitRest(waitTime));
+        }
+        else if (waitComplete == false)
+        {
+            StartCoroutine(WaitRest(waitTime));
+        }
 
         if (deleteSelf == true)
         {
@@ -26,26 +34,12 @@ public class SC_CanMovement : MonoBehaviour
 
             if (deletionComplete == false && deletionTime > 0)
             {
-                deletionTime -= Time.deltaTime;
+                deletionTime -= Time.fixedDeltaTime;
             }
             else if (deletionTime <= 0)
             {
                 deletionComplete = true;
             }
-
-        }
-    }
-
-    void ConveyerMovement()
-    {
-        if (waitComplete == true)
-        {
-            transform.Translate(Vector2.right * runSpd * Time.deltaTime);
-            StartCoroutine(WaitRest(waitTime));
-        }
-        else if (waitComplete == false)
-        {
-            StartCoroutine(WaitRest(waitTime));
         }
     }
 
