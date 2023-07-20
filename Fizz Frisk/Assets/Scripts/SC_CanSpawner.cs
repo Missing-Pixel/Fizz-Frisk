@@ -7,11 +7,11 @@ public class SC_CanSpawner : MonoBehaviour
     //Variables
     public float canInterval = 3f;
     private float canTimer = 0f;
-    private Transform test;
     private bool hasrepeated = true;
+    public int preventRepeat = 2;
 
     public GameObject[] canNum;
-    [HideInInspector] public List<GameObject> preventRepeat = new List<GameObject>();
+    public Animator anim;
 
     void Update()
     {
@@ -23,25 +23,31 @@ public class SC_CanSpawner : MonoBehaviour
             if (hasrepeated == true)
             {
                 Instantiate(canNum[0], transform.position, transform.rotation);
-                preventRepeat.Clear();
+                preventRepeat = 0;
                 hasrepeated = false;
+                anim.SetBool("WaitEnd", !anim.GetBool("WaitEnd"));
             }
             else if (hasrepeated == false)
             {
                 Instantiate(canNum[Random.Range(0, canNum.Length)], transform.position, transform.rotation);
+                anim.SetBool("WaitEnd", !anim.GetBool("WaitEnd"));
+                
             }
 
-            canTimer -= canInterval;
+            canTimer = 0;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (preventRepeat.Count >= 1)
+        if (preventRepeat > 0)
         {
             hasrepeated = true;
         }
 
-        preventRepeat.Add(canNum[1]);
+        if (collision.tag == "Danger")
+        {
+            preventRepeat += 1;
+        }
     }
 }

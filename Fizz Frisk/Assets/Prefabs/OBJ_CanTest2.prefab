@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558994adeacab9a4f8e0eab93b1b5c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 1
+  waitTime: 1.2
   runSpd: 3
   deleteSelf: 0
-  deletionTime: 3
+  deletionTime: 5
 --- !u!70 &1524165633382150917
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
