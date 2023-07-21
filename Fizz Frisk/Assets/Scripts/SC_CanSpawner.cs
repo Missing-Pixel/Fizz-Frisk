@@ -25,16 +25,20 @@ public class SC_CanSpawner : MonoBehaviour
                 Instantiate(canNum[0], transform.position, transform.rotation);
                 preventRepeat = 0;
                 hasrepeated = false;
-                anim.SetBool("WaitEnd", !anim.GetBool("WaitEnd"));
+                anim.SetBool("WaitEnd", true);
             }
             else if (hasrepeated == false)
             {
                 Instantiate(canNum[Random.Range(0, canNum.Length)], transform.position, transform.rotation);
-                anim.SetBool("WaitEnd", !anim.GetBool("WaitEnd"));
+                anim.SetBool("WaitEnd", true);
                 
             }
 
             canTimer -= canInterval + Time.fixedDeltaTime;
+        }
+        else if (canTimer <= canInterval)
+        {
+            anim.SetBool("WaitEnd", false);
         }
     }
 
