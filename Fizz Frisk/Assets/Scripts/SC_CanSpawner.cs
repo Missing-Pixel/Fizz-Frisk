@@ -8,7 +8,8 @@ public class SC_CanSpawner : MonoBehaviour
     public float canInterval = 3f;
     private float canTimer = 0f;
     private bool hasrepeated = true;
-    public int preventRepeat = 2;
+    public int preventRepeatBad = 0;
+    public int preventRepeatGood = 0;
 
     public GameObject[] canNum;
     public Animator anim;
@@ -18,20 +19,35 @@ public class SC_CanSpawner : MonoBehaviour
         //Spawn Timer
         canTimer += Time.fixedDeltaTime;
 
+        //Rigs can spawning RNG
+        if (preventRepeatBad > 1 || preventRepeatGood > 2)
+        {
+            hasrepeated = true;
+        }
+
         if (canTimer >= canInterval)
         {
-            if (hasrepeated == true)
+            //Rigs the rng to spawn a good can
+            if (hasrepeated == true && preventRepeatBad > 1)
             {
+                preventRepeatBad = 0;
                 Instantiate(canNum[0], transform.position, transform.rotation);
-                preventRepeat = 0;
                 hasrepeated = false;
                 anim.SetBool("WaitEnd", true);
             }
+            //Rigs the rng to spawn a bad can
+            else if (hasrepeated == true && preventRepeatGood > 1)
+            {
+                preventRepeatGood = 0;
+                Instantiate(canNum[canNum.Length - 1], transform.position, transform.rotation);
+                hasrepeated = false;
+                anim.SetBool("WaitEnd", true);
+            }
+            //Spawns a random can
             else if (hasrepeated == false)
             {
                 Instantiate(canNum[Random.Range(0, canNum.Length)], transform.position, transform.rotation);
                 anim.SetBool("WaitEnd", true);
-                
             }
 
             canTimer -= canInterval + Time.fixedDeltaTime;
@@ -42,16 +58,18 @@ public class SC_CanSpawner : MonoBehaviour
         }
     }
 
+    //increases a variable when the same can is spawned multiple times in a row
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (preventRepeat > 0)
-        {
-            hasrepeated = true;
-        }
-
         if (collision.tag == "Danger")
         {
-            preventRepeat += 1;
+            preventRepeatGood = 0;
+            preventRepeatBad += 1;
+        }
+        else if (collision.tag == ("Safe"))
+        {
+            preventRepeatBad = 0;
+            preventRepeatGood += 1;
         }
     }
 }

@@ -748,8 +748,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canInterval: 2.4
-  preventRepeat: 2
+  preventRepeatBad: 2
+  preventRepeatGood: 2
   canNum:
+  - {fileID: 2212285911172990114, guid: d43286204a031724785841fc5b16e6a2, type: 3}
   - {fileID: 2212285911172990114, guid: d43286204a031724785841fc5b16e6a2, type: 3}
   - {fileID: 2918019918652435422, guid: 87f0d65639e456a4381b1c08ac14a4a0, type: 3}
   anim: {fileID: 1333475614}
@@ -1158,7 +1160,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cda993dc961a1d940ad2fdad6eba96cb, type: 2}
+  - {fileID: 2100000, guid: 7cfdeb49c5739c14da44488e9feff0d7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1243,5 +1245,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1, y: 1.6}
+  m_Size: {x: 2, y: 1.5}
   m_EdgeRadius: 0

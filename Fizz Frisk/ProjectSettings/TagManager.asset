@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Danger
   - Selectable
+  - Safe
   layers:
   - Default
   - TransparentFX
