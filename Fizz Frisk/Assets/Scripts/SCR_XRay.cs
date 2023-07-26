@@ -9,6 +9,7 @@ public class SCR_XRay : MonoBehaviour
     [HideInInspector] public GameObject selectedObj = null;
     Vector3 offset;
 
+
     private void Update()
     {
         //Drag object with mouse

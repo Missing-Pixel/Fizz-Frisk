@@ -125,6 +125,7 @@ MonoBehaviour:
   runSpd: 3
   deleteSelf: 0
   deletionTime: 5
+  test: {fileID: 6900176686918408501, guid: 6055a7cd69e1ddd4da9c3f59652d37f4, type: 3}
 --- !u!70 &4780859997360627343
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

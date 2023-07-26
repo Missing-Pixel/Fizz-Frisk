@@ -5,6 +5,13 @@ using UnityEngine;
 public class SCR_Detector : MonoBehaviour
 {
     SC_CanMovement deletion = null;
+    SCR_Health healthManagerScript;
+    GameObject healthManager;
+
+    private void Start()
+    {
+        healthManager = GameObject.Find("OBJ_HealthManager");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +19,8 @@ public class SCR_Detector : MonoBehaviour
         if (collision.tag == "Danger")
         {
             Debug.Log("Bad Went Through");
+            healthManagerScript = healthManager.GetComponent<SCR_Health>();
+            healthManagerScript.PlayerDamaged();
         }
         else if (collision.tag == "Safe")
         {

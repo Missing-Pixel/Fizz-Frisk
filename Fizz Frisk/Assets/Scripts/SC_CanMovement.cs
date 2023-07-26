@@ -17,9 +17,13 @@ public class SC_CanMovement : MonoBehaviour
     private bool deletionComplete = false;
     Material highlightShader;
 
+    SCR_Health healthManagerScript;
+    GameObject healthManager;
+
     private void Start()
     {
         highlightShader = GetComponent<SpriteRenderer>().material;
+        healthManager = GameObject.Find("OBJ_HealthManager");
     }
 
     void FixedUpdate()
@@ -65,6 +69,8 @@ public class SC_CanMovement : MonoBehaviour
                 else if (gameObject.tag == "Safe")
                 {
                     Debug.Log("Killed Good");
+                    healthManagerScript = healthManager.GetComponent<SCR_Health>();
+                    healthManagerScript.PlayerDamaged();
                 }
 
                 Destroy(gameObject);
