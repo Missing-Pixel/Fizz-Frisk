@@ -6,7 +6,7 @@ public class SC_CanMovement : MonoBehaviour
 {
     // Variables
     public float waitTime = 0f;
-    public float runSpd = 1f;
+    public float runSpd = 3f;
     private bool waitComplete = true;
     private bool avoidDelete = false;
     private bool objectSelected = false;
@@ -62,6 +62,8 @@ public class SC_CanMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
+                FindObjectOfType<SCR_AudioManager>().PlaySoundsVaried("Can" + Random.Range(1,3));
+
                 if (gameObject.tag == "Danger")
                 {
                     Debug.Log("Killed Bad");

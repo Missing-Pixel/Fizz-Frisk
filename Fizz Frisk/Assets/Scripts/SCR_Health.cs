@@ -13,6 +13,8 @@ public class SCR_Health : MonoBehaviour
     void Start()
     {
         health = healthMax;
+
+        FindObjectOfType<SCR_AudioManager>().PlaySounds("BackgroundMusic");
     }
 
     public void PlayerDamaged()
