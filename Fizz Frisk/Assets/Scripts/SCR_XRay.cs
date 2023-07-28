@@ -121,8 +121,6 @@ public class SCR_XRay : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log(forcedRecharge);
     }
 
     //Clamp Movement

@@ -8,7 +8,8 @@ public class SCR_Detector : MonoBehaviour
     SCR_Health healthManagerScript;
     GameObject healthManager;
     public Animator anim;
-    
+    private SCR_Score scoreUpdate;
+    public GameObject scoreManager;
 
     private void Start()
     {
@@ -33,6 +34,8 @@ public class SCR_Detector : MonoBehaviour
             anim.SetInteger("ScanState", 1);
             FindObjectOfType<SCR_AudioManager>().PlaySounds("Ding");
             Invoke("ResetState", 1);
+            scoreUpdate = scoreManager.GetComponent<SCR_Score>();
+            scoreUpdate.ScoreUpdate(100);
         }
 
         //Tells the can to delete itself

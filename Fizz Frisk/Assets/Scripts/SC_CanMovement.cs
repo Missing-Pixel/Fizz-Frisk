@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.PlayerLoop.EarlyUpdate;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class SC_CanMovement : MonoBehaviour
 {
@@ -19,11 +22,14 @@ public class SC_CanMovement : MonoBehaviour
 
     SCR_Health healthManagerScript;
     GameObject healthManager;
+    private SCR_Score scoreUpdate;
+    GameObject scoreManager;
 
     private void Start()
     {
         highlightShader = GetComponent<SpriteRenderer>().material;
         healthManager = GameObject.Find("OBJ_HealthManager");
+        scoreManager = GameObject.Find("OBJ_Canvas");
     }
 
     void FixedUpdate()
@@ -67,6 +73,8 @@ public class SC_CanMovement : MonoBehaviour
                 if (gameObject.tag == "Danger")
                 {
                     Debug.Log("Killed Bad");
+                    scoreUpdate = scoreManager.GetComponent<SCR_Score>();
+                    scoreUpdate.ScoreUpdate(100);
                 }
                 else if (gameObject.tag == "Safe")
                 {
